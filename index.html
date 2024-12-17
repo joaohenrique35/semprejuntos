@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page Mobile First</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        section {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section p{
+            font: 24px ;
+        }
+
+        .secao-video {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .secao-video video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .secao-carrossel {
+            background-color: #f4f4f4;
+            overflow: hidden; /* Garante que apenas uma imagem apareça por vez */
+        }
+
+        .carrossel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+            /* Triplica a largura para acomodar 3 imagens */
+        }
+
+        /* img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        } */
+
+        .carrossel img {
+            width: 100%;
+            height: auto;
+            /* flex-shrink: 0; */
+            transition: transform 0.5s ease-in-out;
+            object-fit: cover;
+        }
+
+        .secao-paragrafo {
+            background-color: #e0e0e0;
+            padding: 40px 20px;
+            font-size: 1.5em;
+        }
+
+        .secao-video-final {
+            padding: 40px 20px;
+            background-color: #000;
+            color: white;
+        }
+
+        .secao-video-final video {
+                width: 100%;
+                height: 100%;
+            }
+        
+            footer{
+                background-color: #000;
+                color: #e0e0e0;
+                width: 100%;
+
+            }
+
+            footer p{
+                text-align: center;
+                font-size: 2em;
+            }
+      
+        
+    </style>
+</head>
+
+<body>
+
+    <!-- Seção 1: Frase de efeito com vídeo de fundo -->
+    <section class="secao-video">
+        <video autoplay muted loop>
+            <source src="https://cdn.pixabay.com/video/2019/05/22/23881-337972830_large.mp4" type="video/mp4">
+            Seu navegador não suporta o vídeo de fundo.
+        </video>
+        <h1>Que essa despedida seja apenas um até logo, pois as boas amizades nunca dizem adeus, elas guardam um lugar
+            especial no coração e sempre encontram um caminho de volta.</h1>
+    </section>
+
+    <!-- Seção 2: Carrossel de fotos automático -->
+    <section class="secao-carrossel">
+        <div class="carrossel">
+            <img src="./img/1 (1).jpeg" alt="Foto 1">
+            <img src="./img/1 (1).JPG" alt="Foto 1">
+            <img src="./img/1 (3).jpeg" alt="Foto 1">
+            <img src="./img/1 (2).JPG" alt="Foto 1">
+            <img src="./img/1 (3).jpeg" alt="Foto 2">
+            <img src="./img/1 (3).JPG" alt="Foto 3">
+            <img src="./img/1 (4).jpeg" alt="Foto 3">
+            <img src="./img/1 (4).JPG" alt="Foto 3">
+           
+        </div>
+    </section>
+
+    <!-- Seção 3: Parágrafo com mensagem de despedida -->
+    <section class="secao-paragrafo">
+        <h2>Carta Aberta</h2>
+        <p>"Minha querida amiga e parceira de jornada,
+            Foram cinco anos intensos, repletos de desafios, aprendizados e conquistas. Trabalhar ao seu lado foi mais do que dividir tarefas ou projetos; foi compartilhar sonhos, ideias e a paixão por ensinar. Cada projeto que realizamos juntos foi uma oportunidade de transformar vidas e, ao mesmo tempo, transformar a nossa própria maneira de ver o mundo.
+            
+            Você sempre trouxe brilho, energia e dedicação ao que fazia, inspirando não apenas os alunos, mas também a mim. Seu compromisso com a educação, seu jeito único de enxergar possibilidades onde muitos veem limites, e sua força para enfrentar desafios foram exemplos que levarei para sempre comigo.
+            
+            Embora nossos caminhos possam seguir rumos diferentes, saiba que sua marca ficará em cada lembrança desses anos incríveis. Nosso tempo juntos não foi apenas trabalho, mas também amizade verdadeira, dessas que não se desfazem com a distância.
+            
+            Torço por você, hoje e sempre, e tenho certeza de que sua luz continuará a iluminar muitos caminhos. Obrigado por cada momento, cada riso, cada conquista dividida. Você fez e sempre fará parte da minha história.
+            
+            Com carinho e admiração,
+            Seu amigo e colega de profissão."</p>
+    </section>
+
+    <!-- Seção 4: Vídeo final -->
+    <section class="secao-video-final">
+        <video controls>
+            <source src="./untitled_YOdxTMFP.mp4">
+        </video>
+    </section>
+
+    <footer>
+        <p>Para uma grande amiga.</p>
+    </footer>
+
+    <script>
+        const carrossel = document.querySelector('.carrossel');
+        const imagens = document.querySelectorAll('.carrossel img');
+        let indice = 0;
+    
+        function rolarCarrossel() {
+            indice = (indice + 1) % imagens.length;
+            carrossel.style.transform = `translateX(-${indice * 100}%)`;
+        }
+    
+        setInterval(rolarCarrossel, 3000);
+    </script>
+
+</body>
+
+</html>
